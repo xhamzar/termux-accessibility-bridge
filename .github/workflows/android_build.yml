@@ -1,0 +1,41 @@
+name: Android CI Build
+
+# Memicu workflow setiap kali ada push ke branch 'main'
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # Menggunakan OS Ubuntu versi terbaru
+    runs-on: ubuntu-latest
+
+    steps:
+      # Langkah 1: Mengunduh kode dari repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Langkah 2: Menyiapkan Java Development Kit (JDK) versi 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Langkah 3: Memberikan izin eksekusi pada Gradle wrapper (PENTING!)
+      - name: Grant execute permission to gradlew
+        run: chmod +x gradlew
+
+      # Langkah 4: Menjalankan build Debug (Penyebab utama error Anda mungkin di sini)
+      - name: Build with Gradle
+        run: ./gradlew assembleDebug
+
+      # Langkah 5: Mengunggah artifact APK (Gunakan path yang lebih spesifik)
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-apk # Nama file zip yang akan diunduh nanti
+          path: app/build/outputs/apk/debug/*.apk # Path spesifik ke file APK
