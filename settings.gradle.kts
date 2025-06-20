@@ -13,5 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Termux Accessibility Bridge"
-// BARIS DI BAWAH INI ADALAH YANG PALING PENTING
 include(":app")
