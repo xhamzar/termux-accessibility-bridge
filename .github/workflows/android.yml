@@ -22,7 +22,7 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: List APK files
+      - name: List all APK files
         run: find . -name "*.apk"
 
       - name: Upload APK
