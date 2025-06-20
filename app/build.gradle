@@ -1,0 +1,5 @@
+// Tambahkan pada bagian dependencies di build.gradle (Module: app)
+dependencies {
+    // ... dependensi lainnya
+    implementation 'org.nanohttpd:nanohttpd:2.3.1'
+}

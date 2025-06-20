@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TermuxAccessibilityBridge</string>
+    <string name="accessibility_service_description">Layanan aksesibilitas untuk Termux API Bridge</string>
+</resources>
